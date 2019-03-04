@@ -1,0 +1,11 @@
+imga=imread('Image A.jpg');
+imgb=imread('Image B.jpg');
+imga0=rgb2gray(imga);
+imgb0=rgb2gray(imgb);
+cpselect(imgb0,imga0)
+tform=cp2tform(movingPoints,fixedPoints,'affine');
+Iout=imtransform(imgb,tform); 
+subplot(1,2,1),imshow(imga);
+subplot(1,2,2),imshow(Iout); 
+p=getframe(gcf);
+imwrite(p.cdata,['total.bmp']);
